@@ -1,5 +1,5 @@
 var {
-  AndruinoInterface,
+  ArdruinoInterface,
   Boards,
   Configs,
   Components: { Led },
@@ -16,7 +16,7 @@ var controller = new AndruinoInterface(
     },
     caching: false,
   },
-  Boards.Andruino_Uno
+  Boards.Ardruino_Uno
 );
 
 var led = controller.createComponent(Led)({pin: "D13"});
