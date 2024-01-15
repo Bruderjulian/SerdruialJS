@@ -1,4 +1,4 @@
-const InternalConfigs = require("./Configs/InternalConfigs");
+const InternalConfigs = require("./Configs/InternalConfigs.js");
 const { isObject, toObject } = require("./utils");
 
 class CommandHandler {
