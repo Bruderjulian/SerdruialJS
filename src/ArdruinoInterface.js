@@ -1,6 +1,6 @@
 const { SerialPort, ReadlineParser, ReadyParser } = require("serialport");
-const cmdHandler = require("./AndruinoCommands.js");
-const {
+const cmdHandler = require("./CommandHandler.js");
+const {    
   parsePinData,
   formatValue,
   validBaudRate,
@@ -13,7 +13,7 @@ const PublicConfigs = require("./Configs/PublicConfigs.js");
 const InternalConfigs = require("./Configs/InternalConfigs.js");
 global.BoardInstances = [];
 
-class AndruinoInterface {
+class ArdruinoInterface {
   #debugging = {};
   #cache = {};
   #port;
