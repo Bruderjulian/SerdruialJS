@@ -4,10 +4,10 @@ var components = {
 };
 
 module.exports = {
-  AndruinoInterface: require("./AndruinoInterface.js"),
+  ArdruinoInterface: require("./ArdruinoInterface.js"),
   Configs: require("./Configs/PublicConfigs.js"),
   Boards: require("./Configs/Boards.js"),
   Components: components,
 };
 
-//Todo: Component initialization, Components, commands, clean up, optimizations, Boards,
+//Todo: Components, commands, clean up, optimizations, Boards,
