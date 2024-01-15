@@ -3,7 +3,7 @@ var {
   Boards,
   Configs,
   Components: { Led },
-} = require("./index.js");
+} = require("./src/index.js");
 
 var controller = new AndruinoInterface(
   {
