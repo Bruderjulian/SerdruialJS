@@ -4,7 +4,7 @@
   },
   "name": "anduinojs",
   "version": "1.0.0",
-  "description": "Allows to control an Andruino with Javascript",
+  "description": "Allows to control an Ardruino with Javascript",
   "main": "./src/index.js",
   "devDependencies": {},
   "scripts": {
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Bruderjulian/AnduinoJS.git"
+    "url": "git+https://github.com/Bruderjulian/SerdruialJS.git"
   },
   "keywords": [
     "Andruino",
@@ -21,7 +21,7 @@
   "author": "Julizey",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Bruderjulian/AnduinoJS/issues"
+    "url": "https://github.com/Bruderjulian/SerdruialJS/issues"
   },
-  "homepage": "https://github.com/Bruderjulian/AnduinoJS#readme"
+  "homepage": "https://github.com/Bruderjulian/SerdruialJS#readme"
 }
