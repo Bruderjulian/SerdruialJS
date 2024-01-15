@@ -1,5 +1,5 @@
 var Boards = {
-  Andruino_Uno: {
+  Ardruino_Uno: {
     name: "Arduino Uno",
     pinData: "D0-D13/A1-A5",
   },
