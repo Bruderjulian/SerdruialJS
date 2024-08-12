@@ -10,8 +10,6 @@ var PublicConfigs = {
     $57600: 57600,
     $115200: 115200,
   },
-  InputIdentifier: "#+",
-  OutputIdentifier: "#-",
   pinTypes: {
     digital: "D",
     analog: "A",

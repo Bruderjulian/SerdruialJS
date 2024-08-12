@@ -1,25 +1,34 @@
-const { isObject } = require("../utils");
+const { isObject, validatePin, formatValue } = require("../utils");
 const Component = require("./Component");
 
 class Led extends Component {
   #interval = false;
   constructor(options) {
     super(isObject(options) ? options.board : undefined);
-    if (!this.board.validPin(options.pin)) throw Error("Invalid Pin");
-    this.pin = options.pin;
+    var { pin, type } = validatePin.call(this._board, options);
+    this.pin = pin;
+    this.type = type;
     this.#interval = undefined;
   }
 
   init() {
-    this.board.pinMode(this.pin, false);
+    this._board.pinMode(this.pin, false);
   }
 
-  on(value = true) {
-    this.board.setPin(this.pin, value);
+  on() {
+    this._board.setPin(this.pin, true);
   }
 
   off() {
-    this.board.setPin(this.pin, false);
+    this.low();
+  }
+
+  high() {
+    this._board.setPin(this.pin, true);
+  }
+
+  low() {
+    this._board.setPin(this.pin, false);
     if (this.#interval) {
       clearInterval(this.#interval);
       this.#interval = undefined;
@@ -27,20 +36,29 @@ class Led extends Component {
   }
 
   toggle() {
-    this.board.setPin(this.pin, this.getState() > 0 ? 0 : 255);
+    this._board.togglePin(this.pin);
   }
 
-  getState() {
-    return this.board.readCache(this.pin);
-  }
-
-  strobe(duration) {
+  strobe(rate) {
     this.#interval = setInterval(
       function () {
         this.toggle();
       }.bind(this),
-      duration
+      rate
     );
+  }
+
+  write(value) {
+    if (typeof value !== "number") return;
+    this._board.setPin(this.pin, formatValue(value, isAnalog()));
+  }
+
+  read() {
+    this._board.readPin(this.pin);
+  }
+
+  isAnalog() {
+    return this.type == "analog";
   }
 }
 

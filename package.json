@@ -1,27 +1,39 @@
 {
-  "dependencies": {
-    "serialport": "^12.0.0"
-  },
-  "name": "anduinojs",
+  "name": "serdruialjs",
   "version": "1.0.0",
   "description": "Allows to control an Ardruino with Javascript",
   "main": "./src/index.js",
-  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node tests/runTests.js"
   },
+  "author": "Julizey",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Bruderjulian/SerdruialJS.git"
   },
-  "keywords": [
-    "Andruino",
-    "Javascript"
-  ],
-  "author": "Julizey",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Bruderjulian/SerdruialJS/issues"
   },
-  "homepage": "https://github.com/Bruderjulian/SerdruialJS#readme"
+  "homepage": "https://github.com/Bruderjulian/SerdruialJS#readme",
+  "keywords": [
+    "Ardruino",
+    "ino",
+    "Javascript",
+    "Serialport",
+    "Serial",
+    "Communication",
+    "Controller"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@serialport/binding-mock": "^10.2.2",
+    "@serialport/bindings-cpp": "^12.0.1",
+    "@serialport/parser-delimiter": "^12.0.0",
+    "@serialport/parser-ready": "^12.0.0",
+    "@serialport/stream": "^12.0.0",
+    "make-error": "^1.3.6"
+  },
+  "devDependencies": {
+    "jasmine": "^5.1.0"
+  }
 }

@@ -1,31 +1,39 @@
-const { isObject, validatePin } = require("../utils");
+const { isObject, validatePin, formatValue } = require("../utils");
 const Component = require("./Component");
 
 class Pin extends Component {
   #interval = false;
-  #_this;
+  _board;
   static ComponentData = {
     name: "Pin",
   };
   constructor(options) {
     super(isObject(options) ? options.Base : undefined);
     this.#interval = undefined;
-    var { pin, type, mode } = validatePin(options);
+    var { pin, type, mode } = validatePin.call(options);
     this.pin = pin;
     this.type = type;
     this.mode = mode;
   }
 
   init() {
-    this.#_this.pinMode(this.pin, this.mode == "output" ? false : true);
+    this._board.pinMode(this.pin, this.mode == "input");
+  }
+
+  on() {
+    this.high();
+  }
+
+  off() {
+    this.low();
   }
 
   high(value = true) {
-    this.#_this.setPin(this.pin, value);
+    this.write(value);
   }
 
   low() {
-    this.#_this.setPin(this.pin, false);
+    this.write(false);
     if (this.#interval) {
       clearInterval(this.#interval);
       this.#interval = undefined;
@@ -33,34 +41,34 @@ class Pin extends Component {
   }
 
   write(value) {
-    this.#_this.setPin(this.pin, value);
+    this._board.setPin(this.pin, formatValue(value, this.isAnalog()));
   }
 
   read() {
-    this.#_this.readPin(this.pin);
+    this._board.readPin(this.pin);
   }
 
   pulse() {}
 
   toggle() {
-    this.#_this.setPin(this.pin, this.getState() > 0 ? 0 : 255);
+    this._board.togglePin(this.pin);
   }
 
-  getState() {
-    return this.#_this.readCache(this.pin);
-  }
-
-  strobe(duration) {
+  strobe(rate) {
     this.#interval = setInterval(
       function () {
         this.toggle();
       }.bind(this),
-      duration
+      rate
     );
   }
 
   get getComponentData() {
     return Pin.ComponentData;
+  }
+
+  isAnalog() {
+    return this.type == "analog";
   }
 }
 
