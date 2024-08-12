@@ -1,7 +1,7 @@
 const { SerialPort } = require("../lib/serialport.js");
 const { DelimiterParser } = require("@serialport/parser-delimiter");
 const { ReadyParser } = require("@serialport/parser-ready");
-const cmdHandler = require("./AndruinoCommands.js");
+const cmdHandler = require("./ArdruinoCommands.js");
 const { PluginHandler } = require("./PluginLoader.js");
 const {
   parsePinData,
@@ -17,7 +17,7 @@ const Boards = require("./Configs/Boards.js").Boards;
 global.BoardInstances = [];
 global.ComponentNames = [];
 
-class AndruinoInterface {
+class ArdruinoInterface {
   #debugging = {};
   #cache = {};
   #port;
@@ -380,4 +380,4 @@ class AndruinoInterface {
   }
 }
 
-module.exports = AndruinoInterface;
+module.exports = ArdruinoInterface;
