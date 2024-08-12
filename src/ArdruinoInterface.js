@@ -1,7 +1,7 @@
 const { SerialPort } = require("../lib/serialport.js");
 const { DelimiterParser } = require("@serialport/parser-delimiter");
 const { ReadyParser } = require("@serialport/parser-ready");
-const cmdHandler = require("./ArdruinoCommands.js");
+const cmdHandler = require("./CommandHandler.js");
 const { PluginHandler } = require("./PluginLoader.js");
 const {
   parsePinData,
